@@ -1,9 +1,5 @@
-import { Console, Data, Effect, Either, Schema } from "effect";
+import { Console, Data, Effect, Schema } from "effect";
 import { NotEnoughInformation, safeFetch } from "../json.ts";
-import { left } from "effect/Either";
-import { length } from "effect/MutableQueue";
-import { right } from "effect/Either";
-import { string } from "effect/FastCheck";
 
 const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price";
 
@@ -33,7 +29,7 @@ const parseResponse = (
   baseCurrencies: string[],
   body: typeof TicketResponse.Type
 ) => {
-  let prices: Record<string, number> = {};
+  const prices: Record<string, number> = {};
   let missingCurrencies: string[] = [];
   loop1: for (const ticket of body) {
     for (const base of baseCurrencies) {
