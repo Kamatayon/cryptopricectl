@@ -3,7 +3,7 @@ import { pipe } from "effect";
 import { getPrice } from "./sources/binance.ts";
 import { formatObject } from "./formatting.ts";
 
-const priceProgramWithErrorCatching = (quote: string, bases: string[]) =>
+export const priceProgramWithErrorCatching = (quote: string, bases: string[]) =>
   getPrice(quote, bases)
     .pipe(Effect.map(formatObject))
     .pipe(
@@ -31,13 +31,11 @@ const priceProgramWithErrorCatching = (quote: string, bases: string[]) =>
       })
     );
 
-function runPriceProgram(quote: string, bases: string[]) {
-  const program = pipe(
+const runPriceProgram = (quote: string, bases: string[]) =>
+  pipe(
     priceProgramWithErrorCatching(quote, bases),
     Effect.andThen(Console.log)
   );
-  Effect.runPromise(program);
-}
 
 // Example usage
-runPriceProgram("USDT", ["BTC", "LTC"]);
+// runPriceProgram("USDT", ["BTC", "LTC"]);
