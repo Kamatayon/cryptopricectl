@@ -1,4 +1,4 @@
-import { Console, Data, Effect, Schema } from "effect";
+import { Console, Data, Effect, Schema } from "npm:effect";
 import { NotEnoughInformation, safeFetch } from "../utils/json.ts";
 
 const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price";
@@ -57,7 +57,6 @@ export const getPrice = (quoteCurrency: string, baseCurrencies: string[]) =>
         message: errorBody.msg,
       });
     }
-    yield* Console.log(body);
     const jsonBody = yield* Schema.decodeUnknown(TicketResponse)(body);
     const parsedResponse = parseResponse(baseCurrencies, jsonBody);
     if (parsedResponse instanceof Error) {

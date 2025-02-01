@@ -1,5 +1,5 @@
-import { Data, Effect } from "effect";
-import { pipe } from "effect/Function";
+import { Data, Effect } from "npm:effect";
+import { pipe } from "npm:effect/Function";
 
 export class HttpError extends Data.TaggedError("HttpError")<{
   cause: unknown;

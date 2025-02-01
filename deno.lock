@@ -3,9 +3,12 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.13",
     "jsr:@std/internal@^1.0.6": "1.0.9",
+    "npm:@effect/cli@*": "0.67.1_@effect+platform@0.88.2__effect@3.16.13_@effect+printer@0.44.14__@effect+typeclass@0.35.14___effect@3.16.13__effect@3.16.13_@effect+printer-ansi@0.44.14__@effect+typeclass@0.35.14___effect@3.16.13__effect@3.16.13_effect@3.16.13",
     "npm:@effect/cli@~0.67.1": "0.67.1_@effect+platform@0.88.2__effect@3.16.13_@effect+printer@0.44.14__@effect+typeclass@0.35.14___effect@3.16.13__effect@3.16.13_@effect+printer-ansi@0.44.14__@effect+typeclass@0.35.14___effect@3.16.13__effect@3.16.13_effect@3.16.13",
+    "npm:@effect/platform-node@*": "0.91.0_@effect+cluster@0.43.1__@effect+platform@0.88.2___effect@3.16.13__@effect+rpc@0.65.2___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+sql@0.42.0___@effect+experimental@0.52.2____@effect+platform@0.88.2_____effect@3.16.13____effect@3.16.13___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+workflow@0.5.1___@effect+platform@0.88.2____effect@3.16.13___@effect+rpc@0.65.2____@effect+platform@0.88.2_____effect@3.16.13____effect@3.16.13___effect@3.16.13__effect@3.16.13_@effect+platform@0.88.2__effect@3.16.13_@effect+rpc@0.65.2__@effect+platform@0.88.2___effect@3.16.13__effect@3.16.13_@effect+sql@0.42.0__@effect+experimental@0.52.2___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+platform@0.88.2___effect@3.16.13__effect@3.16.13_effect@3.16.13",
     "npm:@effect/platform-node@0.91": "0.91.0_@effect+cluster@0.43.1__@effect+platform@0.88.2___effect@3.16.13__@effect+rpc@0.65.2___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+sql@0.42.0___@effect+experimental@0.52.2____@effect+platform@0.88.2_____effect@3.16.13____effect@3.16.13___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+workflow@0.5.1___@effect+platform@0.88.2____effect@3.16.13___@effect+rpc@0.65.2____@effect+platform@0.88.2_____effect@3.16.13____effect@3.16.13___effect@3.16.13__effect@3.16.13_@effect+platform@0.88.2__effect@3.16.13_@effect+rpc@0.65.2__@effect+platform@0.88.2___effect@3.16.13__effect@3.16.13_@effect+sql@0.42.0__@effect+experimental@0.52.2___@effect+platform@0.88.2____effect@3.16.13___effect@3.16.13__@effect+platform@0.88.2___effect@3.16.13__effect@3.16.13_effect@3.16.13",
     "npm:@types/node@^24.0.14": "24.0.14",
+    "npm:effect@*": "3.16.13",
     "npm:effect@^3.16.13": "3.16.13"
   },
   "jsr": {
