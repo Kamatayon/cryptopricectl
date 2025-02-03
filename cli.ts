@@ -1,7 +1,7 @@
-import { Command, Args, HelpDoc } from "npm:@effect/cli";
+import { Command, Args, HelpDoc } from "@effect/cli";
 import process from "node:process";
-import { NodeContext, NodeRuntime } from "npm:@effect/platform-node";
-import { Console, Effect } from "npm:effect";
+import { NodeContext, NodeRuntime } from "@effect/platform-node";
+import { Console, Effect } from "effect";
 import { priceProgram } from "./priceProgram.ts";
 
 const regex = /^\s*([\w-]+(\s*,\s*[\w-]+)*)?\s*$/;

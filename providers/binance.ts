@@ -1,4 +1,4 @@
-import { Console, Data, Effect, Schema } from "npm:effect";
+import { Data, Effect, Schema } from "effect";
 import { NotEnoughInformation, safeFetch } from "../utils/json.ts";
 
 const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price";

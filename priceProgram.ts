@@ -1,4 +1,4 @@
-import { Effect } from "npm:effect";
+import { Effect } from "effect";
 import { getPrice } from "./providers/binance.ts";
 import { formatObject } from "./utils/formatting.ts";
 
