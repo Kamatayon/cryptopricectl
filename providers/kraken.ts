@@ -24,7 +24,7 @@ const krakenAssetMap = {
   XDG: "DOGE",
 };
 
-const TicketSuccess = Schema.Map({
+const TicketSuccess = Schema.Record({
   key: Schema.String,
   value: Schema.Struct({
     a: Schema.Array(Schema.String),
@@ -41,15 +41,13 @@ const TicketSuccess = Schema.Map({
 
 const TicketResponse = Schema.Struct({
   error: Schema.Array(Schema.String),
-  result: Schema.Option(TicketSuccess),
-}).pipe(
-  Schema.filter(
-    (a) =>
-      a.error.length > 0 ||
-      a.result._tag !== "None" ||
-      "Missing both result and error."
-  )
-);
+  result: TicketSuccess.pipe(Schema.optional),
+});
+// .pipe(
+// Schema.filter(
+//   (a) => a.error.length == 0 || !!a.result || "Missing both result and error."
+// )
+// );
 
 const matchPair = (pair: string) => {
   const mappedSymbol = Object.entries(krakenAssetMap).find(
@@ -67,7 +65,7 @@ const parseResponse = (
   body: typeof TicketSuccess.Type
 ) => {
   const result: PriceDictionary = {};
-  for (const [pair, obj] of body.entries()) {
+  for (const [pair, obj] of Object.entries(body)) {
     const baseCurrency = matchPair(pair);
     if (baseCurrencies.includes(baseCurrency)) {
       result[baseCurrency] = Number(obj.c[0]);
@@ -105,12 +103,12 @@ export const getPrice = (quoteCurrency: string, baseCurrencies: string[]) =>
     if (jsonBody.error.length) {
       return yield* new KrakenApiError({ errors: jsonBody.error });
     }
-    if (jsonBody.result._tag == "None") {
+    if (!jsonBody.result) {
       return yield* Effect.die(
         "Impossible condition. The error is empty AND we don't the result"
       );
     }
-    const parsedResponse = parseResponse(baseCurrencies, jsonBody.result.value);
+    const parsedResponse = parseResponse(baseCurrencies, jsonBody.result);
     if (Either.isLeft(parsedResponse)) {
       return yield* parsedResponse.left;
     }
@@ -119,4 +117,5 @@ export const getPrice = (quoteCurrency: string, baseCurrencies: string[]) =>
 
 export const _private = {
   parseResponse,
+  TicketResponse,
 };

@@ -1,5 +1,6 @@
 import { Data, Effect, Schema } from "effect";
 import { NotEnoughInformation, safeFetch } from "../utils/json.ts";
+import type { PriceDictionary } from "../types.ts";
 
 const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price";
 
@@ -28,7 +29,7 @@ const formatUrl = (quoteCurrency: string, baseCurrencies: string[]) => {
 const parseResponse = (
   baseCurrencies: string[],
   body: typeof TicketResponse.Type
-) => {
+): PriceDictionary | NotEnoughInformation => {
   const prices: Record<string, number> = {};
   let missingCurrencies: string[] = [];
   loop1: for (const ticket of body) {

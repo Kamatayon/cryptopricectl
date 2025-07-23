@@ -1,5 +1,5 @@
 import { _private } from "./kraken.ts";
-import { Effect } from "effect";
+import { Effect, Schema } from "effect";
 
 Deno.test("parsing Kraken API response", async () => {
   const response = {
@@ -27,13 +27,33 @@ Deno.test("parsing Kraken API response", async () => {
     },
   };
   // Simulate the Map structure expected by parseResponse
-  const map = new Map(Object.entries(response));
   const baseCurrencies = ["SOL", "BTC"];
   const result = await Effect.runPromise(
-    _private.parseResponse(baseCurrencies, map)
+    _private.parseResponse(baseCurrencies, response)
   );
   if (result.SOL !== 201.06)
     throw new Error(`Expected SOL=201.06, got ${result.SOL}`);
   if (result.BTC !== 119868.9)
     throw new Error(`Expected XBT=119868.9, got ${result.BTC}`);
+});
+
+Deno.test("Schema correctly handling the correct kraken response", () => {
+  const resp = {
+    error: [],
+    result: {
+      XBTUSDT: {
+        a: ["119833.70000", "1", "1.000"],
+        b: ["119833.60000", "1", "1.000"],
+        c: ["119888.50000", "0.00019275"],
+        v: ["1.57395709", "69.04530356"],
+        p: ["119841.16807", "118658.74359"],
+        t: [81, 4069],
+        l: ["119692.00000", "116240.40000"],
+        h: ["119999.90000", "120261.30000"],
+        o: "119955.80000",
+      },
+    },
+  };
+  const effect = Schema.decodeUnknown(_private.TicketResponse)(resp);
+  Effect.runSync(effect);
 });
