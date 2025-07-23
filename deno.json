@@ -10,7 +10,7 @@
     "effect": "npm:effect@^3.17.0"
   },
   "name": "@kamatayon/cryptopricectl",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "exports": "./cli.ts"
 }
